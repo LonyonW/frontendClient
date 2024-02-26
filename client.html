@@ -6,15 +6,13 @@
 </head>
 <body >
 	<div id="app">
-		<h1>Nueva donación</h1>
-		<input type="number" name="value" v-model="value">
-		<button @click="sendDonation()">Enviar</button>
-		<p>{{message}}</p>
+		<h1>Parqueadero de vehiculos el rayo macuin </h1>
 
+		<button @click="refreshDonations()">Listar vehiculos registrados</button>
 		<table class="table">
 			<thead>
 			  <tr>
-				<th scope="col">Brand</th>
+				<th scope="col">Photo</th>
 				<th scope="col">License_Plate</th>
 				<th scope="col">Color</th>
 				<th scope="col">Time</th>
@@ -22,7 +20,7 @@
 			</thead>
 			<tbody>
 			  <tr v-for="item in totalDonations">
-				<th>{{ item.brand }}</th>
+				<th><img :src="item.brand"></th>
 				<td>{{ item.license_plate }}</td>
 				<td>{{ item.color }}</td>
 				<td>{{ item.time }}</td>
@@ -30,11 +28,10 @@
 			</tbody>
 		  </table>
 
-		<h1 id="total">Total donacion: ${{totalDonations}}</h1>
-		<button @click="refreshDonations()">Refrescar</button>
-		<p>{{message}}</p>
+		<!--<h1 id="total">Total donacion: ${{totalDonations}}</h1>-->
+		
 
-		<h1>RegistoMarcaCarro</h1>
+		<h1>Registrar un vehiculo</h1>
 		<input type="text" name="car" v-model="car">
 		<input type="text" name="license_plate" v-model="license_plate">
 		<input type="text" name="color" v-model="color">
@@ -44,10 +41,8 @@
 		<h1> Retirar vehiculo por placa</h1>
 		<input type="text" name="license_delete" v-model="license_delete">
 		<button @click="retireCar()">Retirar</button>
-		<p>{{message}}</p>
+		<p>{{message1}}</p>
 
-		<h1 id="listed"> Vehiculos listados: ${{cars}}</h1>
-		<button @click="getCarsFromServer()">Refrescar</button>
 	</div>
 	<script src="js/client.js"></script>
 </body>

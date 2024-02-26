@@ -7,6 +7,7 @@ const app = createApp({
     const totalDonations = "";
     const value = 0;
     const message = "";
+    const message1 = "";
     const car = "renault";
     const license_plate = "duc-851";
     const color = "gris"; // Remove the unnecessary line continuation character
@@ -16,6 +17,7 @@ const app = createApp({
       totalDonations,
       value,
       message,
+      message1,
       car,
       license_plate,
       color,
@@ -53,7 +55,7 @@ const app = createApp({
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
       if (response.status == 200) {
-        this.message = "El carro ha sido registrado.";
+        this.message = "El vehiculo ha sido registrado.";
       } else {
         this.message = "Ha ocurrido un error en el servidor.";
       }

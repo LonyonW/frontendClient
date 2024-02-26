@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Client</title>
+	<script src="js/vue.global.js"></script>
+</head>
+<body >
+	<div id="app">
+		<h1>Nueva donación</h1>
+		<input type="number" name="value" v-model="value">
+		<button @click="sendDonation()">Enviar</button>
+		<p>{{message}}</p>
+
+		
+		<h1 id="total">Total donacion: ${{totalDonations}}</h1>
+		<button @click="refreshDonations()">Refrescar</button>
+		<p>{{message}}</p>
+
+		<h1>RegistoMarcaCarro</h1>
+		<input type="text" name="car" v-model="car">
+		<input type="text" name="license_plate" v-model="license_plate">
+		<input type="text" name="color" v-model="color">
+		<button @click="sendCarData()">Send</button>
+		<p>{{message}}</p>
+
+		<h1> Retirar vehiculo por placa</h1>
+		<input type="text" name="license_delete" v-model="license_delete">
+		<button @click="retireCar()">Retirar</button>
+		<p>{{message}}</p>
+
+		<h1 id="listed"> Vehiculos listados: ${{cars}}</h1>
+		<button @click="getCarsFromServer()">Refrescar</button>
+	</div>
+	<script src="js/client.js"></script>
+</body>
+</html>

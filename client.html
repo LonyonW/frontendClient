@@ -20,7 +20,7 @@
 			</thead>
 			<tbody>
 			  <tr v-for="item in totalDonations">
-				<th><img :src="item.brand"></th>
+				<th><img :src="item.photo"></th>
 				<td>{{ item.license_plate }}</td>
 				<td>{{ item.color }}</td>
 				<td>{{ item.time }}</td>
@@ -32,7 +32,7 @@
 		
 
 		<h1>Registrar un vehiculo</h1>
-		<input type="text" name="car" v-model="car">
+		<input type="text" name="photo" v-model="photo">
 		<input type="text" name="license_plate" v-model="license_plate">
 		<input type="text" name="color" v-model="color">
 		<button @click="sendCarData()">Send</button>

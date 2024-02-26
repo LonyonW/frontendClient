@@ -4,7 +4,7 @@ const SERVICE_URL = "http://localhost:3000/cars";
 
 const app = createApp({
   data() {
-    const totalDonations = 0;
+    const totalDonations = "";
     const value = 0;
     const message = "";
     const car = "renault";
@@ -38,17 +38,6 @@ const app = createApp({
       } else {
         this.message =
           "Ha ocurrido un error en el servidor y la donación no han sido registrados.";
-      }
-    },
-
-    async getCars() {
-      const response = await fetch("http://localhost:3000/carst");
-    
-      if (response.ok) {
-        const cars = await response.json();
-        console.log("Received cars:", cars);
-      } else {
-        console.log("Error:", response.status);
       }
     },
    
@@ -90,11 +79,10 @@ const app = createApp({
     },
 
     async refreshDonations() {
-      const response = await fetch("http://localhost:3000/donations");
+      const response = await fetch("http://localhost:3000/cars");
       const jsonResponse = await response.json();
-      const newDonationsValue = jsonResponse.total;
-      this.totalDonations = newDonationsValue;
-      this.message = "Entra a refresh donations";
+      this.totalDonations = jsonResponse;
+      
     },
 
     async getCarsFromServer() {

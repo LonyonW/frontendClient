@@ -11,7 +11,25 @@
 		<button @click="sendDonation()">Enviar</button>
 		<p>{{message}}</p>
 
-		
+		<table class="table">
+			<thead>
+			  <tr>
+				<th scope="col">Brand</th>
+				<th scope="col">License_Plate</th>
+				<th scope="col">Color</th>
+				<th scope="col">Time</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr v-for="item in totalDonations">
+				<th>{{ item.brand }}</th>
+				<td>{{ item.license_plate }}</td>
+				<td>{{ item.color }}</td>
+				<td>{{ item.time }}</td>
+			  </tr>
+			</tbody>
+		  </table>
+
 		<h1 id="total">Total donacion: ${{totalDonations}}</h1>
 		<button @click="refreshDonations()">Refrescar</button>
 		<p>{{message}}</p>

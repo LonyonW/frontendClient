@@ -8,9 +8,9 @@ const app = createApp({
     const value = 0;
     const message = "";
     const message1 = "";
-    const car = "renault";
-    const license_plate = "duc-851";
-    const color = "gris"; // Remove the unnecessary line continuation character
+    const photo = "https://example.png";
+    const license_plate = "loc-551";
+    const color = "gray"; // Remove the unnecessary line continuation character
     const license_Delete = "";
     const cars = [];
     return {
@@ -18,7 +18,7 @@ const app = createApp({
       value,
       message,
       message1,
-      car,
+      photo,
       license_plate,
       color,
       license_Delete,
@@ -45,7 +45,7 @@ const app = createApp({
    
     async sendCarData() {
       const carData = {
-        brand: this.car,
+        photo: this.photo,
         license_plate: this.license_plate,
         color: this.color,
       };

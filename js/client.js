@@ -1,6 +1,6 @@
 const { createApp, ref, computed } = Vue;
 
-const SERVICE_URL = "http://localhost:3000/cars";
+const SERVICE_URL = "http://10.4.74.181:3000/cars";
 
 const app = createApp({
   data() {
@@ -81,7 +81,7 @@ const app = createApp({
     },
 
     async refreshDonations() {
-      const response = await fetch("http://localhost:3000/cars");
+      const response = await fetch(SERVICE_URL);
       const jsonResponse = await response.json();
       this.totalDonations = jsonResponse;
       

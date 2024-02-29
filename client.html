@@ -2,20 +2,22 @@
 <html>
 <head>
 	<title>Client</title>
+	<link rel="stylesheet" type="text/css" href="styles/styles.css">
 	<script src="js/vue.global.js"></script>
 </head>
 <body >
 	<div id="app">
-		<h1>Parqueadero de vehiculos el UPTC example </h1>
+		<img id="logo" src="https://p77-sign-va.tiktokcdn.com/tos-maliva-avt-0068/47f23aae662eed3a6d903b6a356e1789~c5_720x720.jpeg?lk3s=a5d48078&x-expires=1709280000&x-signature=Xfqwtxhj%2Br8CTwCzqGztBMaCNCk%3D" alt="Logo">
+		<h1>Parqueadero de vehiculos del circo </h1>
 
 		<button @click="refreshDonations()">Listar vehiculos registrados</button>
 		<table class="table">
 			<thead>
 			  <tr>
-				<th scope="col">Photo</th>
-				<th scope="col">License_Plate</th>
+				<th scope="col">Foto</th>
+				<th scope="col">Placa</th>
 				<th scope="col">Color</th>
-				<th scope="col">Time</th>
+				<th scope="col">Hora de registro</th>
 			  </tr>
 			</thead>
 			<tbody>

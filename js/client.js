@@ -1,6 +1,6 @@
 const { createApp, ref, computed } = Vue;
 
-const SERVICE_URL = "http://10.4.74.181:3000/cars";
+const SERVICE_URL = "http://localhost:3000/cars";
 
 const app = createApp({
   data() {
@@ -29,7 +29,7 @@ const app = createApp({
 
     async sendDonation() {
       this.message = "Entra a sendDonation";
-      const response = await fetch("http://localhost:3000/donations", {
+      const response = await fetch(SERVICE_URL, {
         method: "POST",
         body: JSON.stringify({ donationAmount: this.value }),
         headers: { "Content-type": "application/json; charset=UTF-8" },

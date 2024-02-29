@@ -1,7 +1,6 @@
 const { createApp, ref, computed } = Vue;
 
 const SERVICE_URL = "http://192.168.80.18:3000/cars";
-
 const app = createApp({
   data() {
     const totalDonations = "";
@@ -90,7 +89,7 @@ const app = createApp({
     async getCarsFromServer() {
       try {
         const response = await fetch(SERVICE_URL);
-    
+        
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -100,7 +99,9 @@ const app = createApp({
     
         console.log('Cars from server:', cars);
       } catch (error) {
-        console.log('There was a problem with the fetch operation: ', error);
+        var date = new Date();
+        let dia = date.getDay()+'/'+date.getMonth()+'/'+date.getFullYear();
+        alert('error al solicitar datos del servidor '+dia);
       }
     }
     

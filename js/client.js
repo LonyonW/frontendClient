@@ -1,6 +1,11 @@
 const { createApp, ref, computed } = Vue;
 
-const SERVICE_URL = "http://192.168.80.18:3000/cars";
+
+//require("dotenv").config({path: __dirname + '/.env'});
+
+//IP = process.env.DEFAULT_IP;
+
+const SERVICE_URL ="http://192.168.80.18:3000/cars";
 
 const app = createApp({
   data() {

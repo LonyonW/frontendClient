@@ -5,7 +5,7 @@ const { createApp, ref, computed } = Vue;
 
 //IP = process.env.DEFAULT_IP;
 
-const SERVICE_URL ="http://192.168.80.18:3000/cars";
+const SERVICE_URL = "http://192.168.80.18:3000/cars";
 
 const app = createApp({
   data() {
@@ -47,7 +47,7 @@ const app = createApp({
           "Ha ocurrido un error en el servidor y la donación no han sido registrados.";
       }
     },
-   
+
     async sendCarData() {
       const carData = {
         photo: this.photo,
@@ -76,7 +76,7 @@ const app = createApp({
         //body: JSON.stringify({ license_Delete: this.license_Delete }),
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
-    
+
       if (response.ok) {
         const car = await response.json();
         console.log("Car retired:", car);
@@ -89,28 +89,24 @@ const app = createApp({
       const response = await fetch(SERVICE_URL);
       const jsonResponse = await response.json();
       this.totalDonations = jsonResponse;
-      
+
     },
 
     async getCarsFromServer() {
       try {
         const response = await fetch(SERVICE_URL);
-        
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-    
         this.cars = await response.json();
-
-    
         console.log('Cars from server:', cars);
       } catch (error) {
         var date = new Date();
-        let dia = date.getDay()+'/'+date.getMonth()+'/'+date.getFullYear();
-        alert('error al solicitar datos del servidor '+dia);
+        let dia = date.getFullYear() +'-'+ date.getMonth()+ '-' +date.getDay()  + '-' +date.getHours()+':'+date.getMinutes()+':'+date.getMilliseconds();
+        alert('error al solicitar datos del servidor ' + dia);
       }
     }
-    
   },
 });
 

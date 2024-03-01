@@ -1,11 +1,10 @@
 const { createApp, ref, computed } = Vue;
 
-
 //require("dotenv").config({path: __dirname + '/.env'});
 
 //IP = process.env.DEFAULT_IP;
 
-const SERVICE_URL = "http://192.168.80.18:3000/cars";
+const SERVICE_URL = "http://localhost:3000/cars";
 
 const app = createApp({
   data() {
@@ -84,11 +83,17 @@ const app = createApp({
         console.log("Error:", response.status);
       }
     },
-
+    
     async refreshDonations() {
-      const response = await fetch(SERVICE_URL);
-      const jsonResponse = await response.json();
-      this.totalDonations = jsonResponse;
+      try {
+        const response = await fetch(SERVICE_URL);
+        const jsonResponse = await response.json();
+        this.totalDonations = jsonResponse;
+      } catch (error) {
+        var date = new Date();
+        let dia = date.getFullYear() +'-'+ date.getMonth()+ '-' +date.getDay()  + '-' +date.getHours()+':'+date.getMinutes()+':'+date.getMilliseconds();
+        alert('error al solicitar datos del servidor ' + dia);
+      }
 
     },
 
@@ -102,9 +107,6 @@ const app = createApp({
         this.cars = await response.json();
         console.log('Cars from server:', cars);
       } catch (error) {
-        var date = new Date();
-        let dia = date.getFullYear() +'-'+ date.getMonth()+ '-' +date.getDay()  + '-' +date.getHours()+':'+date.getMinutes()+':'+date.getMilliseconds();
-        alert('error al solicitar datos del servidor ' + dia);
       }
     }
   },

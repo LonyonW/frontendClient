@@ -1,14 +1,11 @@
 //require("dotenv").config();
 const { createApp, ref, computed } = Vue;
 
-
 //require("dotenv").config({path: __dirname + '/.env'});
 
 //IP = process.env.DEFAULT_IP;
 
-const SERVICE_URL ="http://192.168.80.16:8888/cars";
-//const SERVICE_URL ="http://10.4.73.92:8888/cars"
-//const SERVICE_URL = process.env.LOADBALANCER_IP;
+const SERVICE_URL = "http://localhost:3000/cars";
 
 const app = createApp({
   data() {
@@ -50,7 +47,7 @@ const app = createApp({
           "Ha ocurrido un error en el servidor y la donación no han sido registrados.";
       }
     },
-   
+
     async sendCarData() {
       const carData = {
         photo: this.photo,
@@ -79,7 +76,7 @@ const app = createApp({
         //body: JSON.stringify({ license_Delete: this.license_Delete }),
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
-    
+
       if (response.ok) {
         const car = await response.json();
         console.log("Car retired:", car);
@@ -87,31 +84,32 @@ const app = createApp({
         console.log("Error:", response.status);
       }
     },
-
+    
     async refreshDonations() {
-      const response = await fetch(SERVICE_URL);
-      const jsonResponse = await response.json();
-      this.totalDonations = jsonResponse;
-      
+      try {
+        const response = await fetch(SERVICE_URL);
+        const jsonResponse = await response.json();
+        this.totalDonations = jsonResponse;
+      } catch (error) {
+        var date = new Date();
+        let dia = date.getFullYear() +'-'+ date.getMonth()+ '-' +date.getDay()  + '-' +date.getHours()+':'+date.getMinutes()+':'+date.getMilliseconds();
+        alert('error al solicitar datos del servidor ' + dia);
+      }
+
     },
 
     async getCarsFromServer() {
       try {
         const response = await fetch(SERVICE_URL);
-    
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-    
         this.cars = await response.json();
-
-    
         console.log('Cars from server:', cars);
       } catch (error) {
-        console.log('There was a problem with the fetch operation: ', error);
       }
     }
-    
   },
 });
 

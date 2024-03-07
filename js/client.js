@@ -1,3 +1,4 @@
+//require("dotenv").config();
 const { createApp, ref, computed } = Vue;
 
 
@@ -5,7 +6,9 @@ const { createApp, ref, computed } = Vue;
 
 //IP = process.env.DEFAULT_IP;
 
-const SERVICE_URL ="http://192.168.80.18:3000/cars";
+const SERVICE_URL ="http://192.168.80.16:8888/cars";
+//const SERVICE_URL ="http://10.4.73.92:8888/cars"
+//const SERVICE_URL = process.env.LOADBALANCER_IP;
 
 const app = createApp({
   data() {
@@ -13,8 +16,8 @@ const app = createApp({
     const value = 0;
     const message = "";
     const message1 = "";
-    const photo = "https://example.png";
-    const license_plate = "loc-551";
+    const photo = "https://img.freepik.com/vector-premium/ilustracion-coche-vector-porsche-911_721155-324.jpg";
+    const license_plate = "loc-999";
     const color = "gray"; // Remove the unnecessary line continuation character
     const license_Delete = "";
     const cars = [];

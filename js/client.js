@@ -5,7 +5,8 @@ const { createApp, ref, computed } = Vue;
 
 //IP = process.env.DEFAULT_IP;
 
-const SERVICE_URL = "http://localhost:3000/cars";
+//const SERVICE_URL = "http://10.4.73.86:8888/cars";
+const SERVICE_URL = "http://10.4.72.240:8888/cars";
 
 const app = createApp({
   data() {
@@ -14,7 +15,7 @@ const app = createApp({
     const message = "";
     const message1 = "";
     const photo = "https://img.freepik.com/vector-premium/ilustracion-coche-vector-porsche-911_721155-324.jpg";
-    const license_plate = "loc-999";
+    const license_plate = "TOT-999";
     const color = "gray"; // Remove the unnecessary line continuation character
     const license_Delete = "";
     const cars = [];
@@ -55,15 +56,26 @@ const app = createApp({
         color: this.color,
       };
       const response = await fetch(SERVICE_URL, {
+
         method: "POST",
         body: JSON.stringify(carData),
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
-      if (response.status == 200) {
-        this.message = "El vehiculo ha sido registrado.";
-      } else {
-        this.message = "Ha ocurrido un error en el servidor.";
+      const data = await response.json();
+      if (response.ok) {
+        if (data.code == 0) {
+          this.message = "Error: " + data.message;
+        } else {
+          this.message = "Success: " + data.message;
+
+        }
+        //this.message = data.message;
+      } 
+      else {
+        this.message = "Ha ocurrido un error en el servidor: " + data.message;
+        //console.log("Error:", response);
       }
+      
     },
 
     async retireCar() {
